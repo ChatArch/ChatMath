@@ -1,0 +1,9 @@
+site_name: ChatMath 文档
+site_url: https://ChatArch.github.io/ChatMath
+repo_url: https://github.com/ChatArch/ChatMath
+theme:
+  name: material
+  language: zh
+nav:
+  - 首页: index.md
+  - English: index.en.md
