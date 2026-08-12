@@ -5,7 +5,7 @@
     <a href="https://github.com/ChatArch/ChatMath/actions/workflows/ci.yml">
         <img src="https://github.com/ChatArch/ChatMath/actions/workflows/ci.yml/badge.svg" alt="Tests" />
     </a>
-    <a href="https://ChatArch.github.io/ChatMath">
+    <a href="https://arch.gh.wzhecnu.cn/ChatMath/">
         <img src="https://img.shields.io/badge/docs-mkdocs-blue.svg" alt="Documentation" />
     </a>
 </div>
@@ -17,26 +17,29 @@
 
 # ChatMath
 
-ChatMath: ChatArch mathematics tooling package
+ChatMath is the ChatArch mathematics tooling package entrypoint. The package currently keeps a root-only CLI plus a ChatEnv configuration discovery entry point; real mathematics tooling subcommands are not exposed yet.
 
 ## Quick Start
 
 ```bash
-pip install -e ".[dev]"
+pip install ChatMath
 chatmath --help
 chatmath --version
-python -m pytest -q
-python -m build
+chatmath --tree
+```
+
+## Current CLI Tree
+
+```text
+chatmath  # ChatArch mathematics tooling entrypoint
+├── --help  # show command help
+├── --version  # show the installed package version
+└── --tree  # show this CLI tree
 ```
 
 ## CLI Contract
 
-This template depends on `chatstyle>=0.1.0,<0.2.0` and `chatenv>=0.2.0,<0.3.0`. New commands should prefer:
-
-- `CommandSchema` / `CommandField` for inputs.
-- `add_interactive_option()` for the shared `-i/-I` switch.
-- `resolve_command_inputs()` for missing args, defaults, TTY behavior, and validation.
-- Generate `config.py` and a `chatenv.configs` entry point by default so the package is ChatEnv-discoverable; use `--without-chatenv-provider` only when ChatEnv integration is intentionally not needed.
+ChatMath currently keeps a root-only CLI plus a ChatEnv configuration discovery entry point. When real interactive commands are added, reintroduce and use ChatStyle's `CommandSchema` / `CommandField`, `add_interactive_option()`, and `resolve_command_inputs()`; until then, do not expose scaffold/demo subcommands.
 
 ## Layout
 
@@ -44,7 +47,7 @@ This template depends on `chatstyle>=0.1.0,<0.2.0` and `chatenv>=0.2.0,<0.3.0`. 
 - `tests/code-tests/`: code tests and migrated historical tests
 - `tests/cli-tests/`: real CLI tests, doc-first
 - `tests/mock-cli-tests/`: mock/fake CLI tests, doc-first
-- `docs/`: long-lived project docs built by mkdocs
+- `docs/`: long-lived project docs built by MkDocs
 
 ## Development Notes
 
