@@ -26,20 +26,22 @@ pip install ChatMath
 chatmath --help
 chatmath --version
 chatmath --tree
+chatmath --tree-brief
 ```
 
 ## Current CLI Tree
 
 ```text
-chatmath  # ChatArch mathematics tooling entrypoint
-├── --help  # show command help
-├── --version  # show the installed package version
-└── --tree  # show this CLI tree
+chatmath
+├── --help  # Show this message and exit.
+├── --version  # Show the version and exit.
+├── --tree  # Print the registered CLI tree and exit.
+└── --tree-brief  # Print the registered CLI tree without parameter signatures and exit.
 ```
 
 ## CLI Contract
 
-ChatMath currently keeps a root-only CLI plus a ChatEnv configuration discovery entry point. When real interactive commands are added, reintroduce and use ChatStyle's `CommandSchema` / `CommandField`, `add_interactive_option()`, and `resolve_command_inputs()`; until then, do not expose scaffold/demo subcommands.
+ChatMath currently keeps a root-only CLI plus a ChatEnv configuration discovery entry point. ChatStyle's `add_tree_option()` generates `--tree` and `--tree-brief` from the real Click registry; the full tree keeps parameter signatures and the brief tree omits them. When real interactive commands are added, continue using ChatStyle's `CommandSchema` / `CommandField`, `add_interactive_option()`, and `resolve_command_inputs()`; until then, do not expose scaffold/demo subcommands.
 
 ## Layout
 

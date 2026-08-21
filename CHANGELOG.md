@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-08-22 - 0.1.2
+
+### Added
+
+- Added `chatmath --tree-brief` and installed-console-script CI coverage across Python 3.10-3.12.
+
+### Changed
+
+- Replaced the package-local tree renderer with ChatStyle's registered Click tree runtime.
+- Aligned runtime bounds to `chatstyle>=0.2.0,<0.3.0` and `chatenv>=0.2.10,<0.3.0`.
+- Synchronized bilingual CLI tree documentation and tightened the MkDocs Material compatibility bound.
+
 ## 2026-08-12 - 0.1.1
 
 ### Added
