@@ -2,8 +2,9 @@
 
 ## CLI Rules
 
-- Current root-only commands use Click plus the ChatEnv provider entry point; add bounded `chatstyle` dependencies only when a real interactive command needs them.
-- Prefer `CommandSchema`, `CommandField`, `add_interactive_option()`, and `resolve_command_inputs()` for future interactive commands after ChatStyle is reintroduced.
+- Keep the real console script on `chatstyle>=0.2.0,<0.3.0` and use `add_tree_option()` for shared `--tree` / `--tree-brief` output from registered Click metadata.
+- Keep the typed provider entry point on `chatenv>=0.2.10,<0.3.0`; use ChatEnv profile discovery and storage paths rather than package-local profile files.
+- Prefer `CommandSchema`, `CommandField`, `add_interactive_option()`, and `resolve_command_inputs()` for future interactive commands.
 - Missing required args should auto-enter interactive mode when recoverable.
 - `-i` forces interactive mode; `-I` disables prompting and must fail fast.
 - Prompt defaults must match actual execution defaults.
@@ -16,6 +17,7 @@
 - Put real CLI coverage under `tests/cli-tests/`.
 - Put mock/fake CLI coverage under `tests/mock-cli-tests/`.
 - Keep `README.md`, `docs/`, and `CHANGELOG.md` in sync with user-facing changes.
+- Read back both `chatmath --tree` and `chatmath --tree-brief` after changing the command registry.
 
 ## Automation
 

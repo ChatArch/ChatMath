@@ -29,6 +29,26 @@ def test_docs_workflows_use_chatarch_site_url():
     assert 'mkdocs build --strict' in ci
 
 
+def test_ci_covers_supported_pythons_and_installed_cli_contract():
+    ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+
+    assert 'python-version: ["3.10", "3.11", "3.12"]' in ci
+    assert "chatmath --version" in ci
+    assert "chatmath --tree" in ci
+    assert "chatmath --tree-brief" in ci
+    assert "python -m build" in ci
+    assert "python -m twine check dist/*" in ci
+
+
+def test_runtime_dependencies_and_chatenv_provider_are_current():
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+
+    assert '"chatstyle>=0.2.0,<0.3.0"' in pyproject
+    assert '"chatenv>=0.2.10,<0.3.0"' in pyproject
+    assert '[project.entry-points."chatenv.configs"]' in pyproject
+    assert 'chatmath = "chatmath.config"' in pyproject
+
+
 def test_mkdocs_material_renderer_and_public_domain():
     config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
 

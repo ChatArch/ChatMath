@@ -26,20 +26,22 @@ pip install ChatMath
 chatmath --help
 chatmath --version
 chatmath --tree
+chatmath --tree-brief
 ```
 
 ## 当前 CLI 树
 
 ```text
-chatmath  # ChatArch mathematics tooling entrypoint
-├── --help  # show command help
-├── --version  # show the installed package version
-└── --tree  # show this CLI tree
+chatmath
+├── --help  # Show this message and exit.
+├── --version  # Show the version and exit.
+├── --tree  # Print the registered CLI tree and exit.
+└── --tree-brief  # Print the registered CLI tree without parameter signatures and exit.
 ```
 
 ## CLI 规范
 
-ChatMath 当前保留 root-only CLI 和 ChatEnv 配置发现入口。新增交互式命令时，应重新引入并使用 ChatStyle 的 `CommandSchema` / `CommandField`、`add_interactive_option()` 与 `resolve_command_inputs()`；没有真实交互命令前，不暴露 scaffold/demo 子命令。
+ChatMath 当前保留 root-only CLI 和 ChatEnv 配置发现入口。`--tree` 与 `--tree-brief` 由 ChatStyle 的 `add_tree_option()` 从真实 Click 注册面生成；前者保留参数签名，后者省略参数签名。新增交互式命令时，应继续使用 ChatStyle 的 `CommandSchema` / `CommandField`、`add_interactive_option()` 与 `resolve_command_inputs()`；没有真实交互命令前，不暴露 scaffold/demo 子命令。
 
 ## 目录结构
 
